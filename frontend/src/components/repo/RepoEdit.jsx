@@ -4,10 +4,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../Navbar";
 import { motion } from "framer-motion";
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
 
 const RepoEdit = () => {
-  const { id } = useParams(); 
+  const { id } = useParams();
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -49,11 +49,9 @@ const RepoEdit = () => {
         visibility,
       };
 
-      const res = await axios.put(
-        `${API_URL}/repo/edit/${id}`,
-        payload,
-        { headers: { "Content-Type": "application/json" } }
-      );
+      const res = await axios.put(`${API_URL}/repo/edit/${id}`, payload, {
+        headers: { "Content-Type": "application/json" },
+      });
 
       setLoading(false);
       navigate(`/repo/${id}`); // redirect to repo view

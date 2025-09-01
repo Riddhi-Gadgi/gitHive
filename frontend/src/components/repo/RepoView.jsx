@@ -5,7 +5,7 @@ import axios from "axios";
 import Navbar from "../Navbar";
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
 
 const RepoView = () => {
   const { id } = useParams();

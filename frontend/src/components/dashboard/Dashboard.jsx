@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import Navbar from "../Navbar";
 import { Link } from "react-router-dom";
 import Footer from "../Footer";
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Dashboard = () => {
   const [repositories, setRepositories] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -45,9 +46,7 @@ const Dashboard = () => {
 
     const fetchRepositories = async () => {
       try {
-        const response = await fetch(
-          `${API_URL}/repo/user/${userId}`
-        );
+        const response = await fetch(`${API_URL}/repo/user/${userId}`);
         const data = await response.json();
 
         const reposArray = Array.isArray(data) ? data : [];

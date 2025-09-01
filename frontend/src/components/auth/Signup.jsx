@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import { useAuth } from "../../authContext";
 import { Link } from "react-router-dom";
 import gitHiveLogo from "../../assets/gitHive.png";
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
