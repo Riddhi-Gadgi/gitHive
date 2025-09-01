@@ -6,7 +6,7 @@ import Navbar from "../Navbar";
 import HeatMapProfile from "./HeatMap";
 import { useAuth } from "../../authContext";
 import { Book, Star } from "lucide-react";
-
+const API_URL = process.env.REACT_APP_API_URL;
 const Profile = () => {
   const navigate = useNavigate();
   const { setCurrentUser } = useAuth();
@@ -29,9 +29,7 @@ const Profile = () => {
 
     const fetchUserDetails = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:3002/userProfile/${userId}`
-        );
+        const response = await axios.get(`${API_URL}/userProfile/${userId}`);
         const user = response.data;
 
         setUserDetails({
@@ -53,9 +51,7 @@ const Profile = () => {
 
     const fetchStarredRepos = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:3002/repo/starred/${userId}`
-        );
+        const res = await axios.get(`${API_URL}/repo/starred/${userId}`);
         setStarredRepos(res.data);
       } catch (err) {
         console.error("Cannot fetch starred repos:", err);
@@ -67,10 +63,9 @@ const Profile = () => {
   // Follow / Unfollow
   const handleFollow = async () => {
     try {
-      const response = await axios.post(
-        `http://localhost:3002/follow/${userId}`,
-        { follow: !isFollowing }
-      );
+      const response = await axios.post(`${API_URL}/follow/${userId}`, {
+        follow: !isFollowing,
+      });
       setIsFollowing(!isFollowing);
       setUserDetails((prev) => ({
         ...prev,

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useAuth } from "../../authContext";
 import { Link } from "react-router-dom";
 import gitHiveLogo from "../../assets/gitHive.png";
-
+const API_URL = process.env.REACT_APP_API_URL;
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -18,7 +18,7 @@ const Signup = () => {
 
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:3002/signup", {
+      const res = await axios.post(`${API_URL}/signup`, {
         username,
         email,
         password,

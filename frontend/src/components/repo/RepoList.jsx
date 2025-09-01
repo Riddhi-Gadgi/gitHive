@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Star, Edit } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
+const API_URL = process.env.REACT_APP_API_URL;
 const RepoList = () => {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -14,7 +14,7 @@ const RepoList = () => {
   useEffect(() => {
     const fetchRepos = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/repo/all");
+        const res = await axios.get(`${API_URL}/repo/all`);
         setRepos(res.data);
       } catch (err) {
         console.error("Error fetching repos:", err);

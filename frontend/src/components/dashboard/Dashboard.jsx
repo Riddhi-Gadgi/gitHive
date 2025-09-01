@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Navbar from "../Navbar";
 import { Link } from "react-router-dom";
 import Footer from "../Footer";
-
+const API_URL = process.env.REACT_APP_API_URL;
 const Dashboard = () => {
   const [repositories, setRepositories] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -46,7 +46,7 @@ const Dashboard = () => {
     const fetchRepositories = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3002/repo/user/${userId}`
+          `${API_URL}/repo/user/${userId}`
         );
         const data = await response.json();
 
@@ -59,7 +59,7 @@ const Dashboard = () => {
     };
     const fetchSuggestedRepositories = async () => {
       try {
-        const response = await fetch(`http://localhost:3002/repo/all`);
+        const response = await fetch(`${API_URL}/repo/all`);
         const data = await response.json();
         setSuggestedRepositories(data);
       } catch (err) {

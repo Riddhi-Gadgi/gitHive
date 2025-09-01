@@ -5,7 +5,7 @@ import axios from "axios";
 import Navbar from "../Navbar";
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
-import { Toaster } from "react-hot-toast";
+const API_URL = process.env.REACT_APP_API_URL;
 
 const RepoView = () => {
   const { id } = useParams();
@@ -22,7 +22,7 @@ const RepoView = () => {
     const fetchRepo = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`http://localhost:3002/repo/${id}`);
+        const res = await axios.get(`${API_URL}/repo/${id}`);
         setRepo(res.data);
         setLoading(false);
       } catch (err) {
@@ -40,7 +40,7 @@ const RepoView = () => {
 
     try {
       setStarring(true);
-      const res = await axios.post(`http://localhost:3002/repo/star/${id}`, {
+      const res = await axios.post(`${API_URL}/repo/star/${id}`, {
         userId: currentUserId,
       });
 
@@ -58,7 +58,7 @@ const RepoView = () => {
       return;
 
     try {
-      await axios.delete(`http://localhost:3002/repo/delete/${id}`);
+      await axios.delete(`${API_URL}:3002/repo/delete/${id}`);
       alert("Repository deleted successfully!");
 
       navigate("/");

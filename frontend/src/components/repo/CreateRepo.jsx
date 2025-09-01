@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
 import Navbar from "../Navbar";
-
+const API_URL = process.env.REACT_APP_API_URL;
 const CreateRepo = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -44,11 +44,9 @@ const CreateRepo = () => {
         issues: [],
       };
 
-      const res = await axios.post(
-        "http://localhost:3002/repo/create",
-        payload,
-        { headers: { "Content-Type": "application/json" } }
-      );
+      const res = await axios.post(`${API_URL}/repo/create`, payload, {
+        headers: { "Content-Type": "application/json" },
+      });
 
       setLoading(false);
 

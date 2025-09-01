@@ -4,9 +4,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../Navbar";
 import { motion } from "framer-motion";
+const API_URL = process.env.REACT_APP_API_URL;
 
 const RepoEdit = () => {
-  const { id } = useParams(); // repoId from route
+  const { id } = useParams(); 
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -20,7 +21,7 @@ const RepoEdit = () => {
   useEffect(() => {
     const fetchRepo = async () => {
       try {
-        const res = await axios.get(`http://localhost:3002/repo/${id}`);
+        const res = await axios.get(`${API_URL}/repo/${id}`);
         const repo = res.data;
         setName(repo.name || "");
         setDescription(repo.description || "");
@@ -49,7 +50,7 @@ const RepoEdit = () => {
       };
 
       const res = await axios.put(
-        `http://localhost:3002/repo/edit/${id}`,
+        `${API_URL}/repo/edit/${id}`,
         payload,
         { headers: { "Content-Type": "application/json" } }
       );
