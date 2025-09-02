@@ -8,13 +8,12 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-start md:items-center space-y-6 md:space-y-0">
         {/* Logo and Tagline */}
         <div className="flex flex-col space-y-2">
-            <Link to="/" className="flex items-center space-x-2">
-                <motion.img
-                  src={gitHiveLogo}
-                  alt="GitHive logo Logo"
-                  className="h-14 w-44"
-                />
-              
+          <Link to="/" className="flex items-center space-x-2">
+            <motion.img
+              src={gitHiveLogo}
+              alt="GitHive logo Logo"
+              className="h-14 w-44"
+            />
           </Link>
           <p className="text-gray-400 text-sm">
             Explore, Create & Share Your Repositories
@@ -36,12 +35,12 @@ const Footer = () => {
           >
             Profile
           </Link>
-          <Link
+          {/* <Link
             to="/dashboard"
             className="hover:text-yellow-400 transition-colors"
           >
             Dashboard
-          </Link>
+          </Link> */}
         </div>
 
         {/* Social Links */}
