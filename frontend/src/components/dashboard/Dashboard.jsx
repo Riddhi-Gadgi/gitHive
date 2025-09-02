@@ -87,7 +87,7 @@ const Dashboard = () => {
       <section className="flex flex-col md:flex-row gap-6 p-6 bg-gray-900 min-h-screen text-gray-100">
         {/* Suggested Repositories */}
         <aside className="md:w-1/4 bg-gray-800 rounded-lg shadow-md p-4">
-          <h3 className="text-lg font-semibold mb-4 text-gray-900 bg-gray-50 p-2 rounded-md">
+          <h3 className="text-lg font-semibold mb-4  bg-gray-900 p-1 rounded-md border-8 border-l-yellow-500 border-gray-800">
             Public Repositories
           </h3>
           {suggestedRepositories?.map((repo) => (
@@ -106,9 +106,9 @@ const Dashboard = () => {
 
         {/* Main Repositories */}
         <main className="md:w-2/4 bg-gray-800 rounded-lg shadow-md p-4">
-          <h2 className="text-xl font-semibold mb-4 text-gray-900 bg-gray-50 p-2 rounded-md">
+          <h3 className="text-lg font-semibold mb-4  bg-gray-900 p-1 rounded-md border-8 border-l-yellow-500 border-gray-800">
             Your Repositories
-          </h2>
+          </h3>
           <div className="mb-4">
             <input
               type="text"
@@ -135,7 +135,7 @@ const Dashboard = () => {
 
         {/* Upcoming Events */}
         <aside className="md:w-1/4 bg-gray-800 rounded-lg shadow-md p-4">
-          <h3 className="text-lg font-semibold mb-4  text-gray-900 bg-gray-50 p-2 rounded-md">
+          <h3 className="text-lg font-semibold mb-4  bg-gray-900 p-1 rounded-md border-8 border-l-yellow-500 border-gray-800">
             Upcoming Events
           </h3>
           <ul className="space-y-2">
